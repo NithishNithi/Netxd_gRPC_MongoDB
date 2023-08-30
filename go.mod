@@ -1,4 +1,4 @@
-module Netxd_grpc_mongo
+module Netxd_gRPC_MongoDb
 
 go 1.20
 
