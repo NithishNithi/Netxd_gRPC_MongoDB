@@ -1,9 +1,9 @@
 package netxdcontrollers
 
 import (
-	"Netxd_grpc_mongo/netxd_grpc_mongo_dal/interfaces"
-	"Netxd_grpc_mongo/netxd_grpc_mongo_dal/models"
-	pro "Netxd_grpc_mongo/netxd_grpc_mongo_proto/Customer_Protobuff"
+	"Netxd_gRPC_MongoDb/netxd_grpc_mongo_dal/interfaces"
+	"Netxd_gRPC_MongoDb/netxd_grpc_mongo_dal/models"
+	pro "Netxd_gRPC_MongoDb/netxd_grpc_mongo_proto/Customer_Protobuff"
 	"context"
 	"log"
 )
@@ -28,7 +28,7 @@ func (s *RPCServer) CreateCustomer(ctx context.Context, req *pro.CustomerDetails
 	// Call the CreateCustomer method of the CustomerService
 	result, err := CustomerService.CreateCustomer(customer_record)
 	if err != nil {
-		log.Fatal(err) 
+		log.Fatal(err)
 	}
 
 	// Create the responseCustomer only when there's no error

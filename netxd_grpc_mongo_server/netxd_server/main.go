@@ -1,11 +1,11 @@
 package main
 
 import (
-	"Netxd_grpc_mongo/netxd_grpc_mongo_dal/services"
-	pro "Netxd_grpc_mongo/netxd_grpc_mongo_proto/Customer_Protobuff"
-	netxdconfig "Netxd_grpc_mongo/netxd_grpc_mongo_server/netxd_config"
-	netxdconstants "Netxd_grpc_mongo/netxd_grpc_mongo_server/netxd_constants"
-	netxdcontrollers "Netxd_grpc_mongo/netxd_grpc_mongo_server/netxd_controllers"
+	"Netxd_gRPC_MongoDb/netxd_grpc_mongo_dal/services"
+	pro "Netxd_gRPC_MongoDb/netxd_grpc_mongo_proto/Customer_Protobuff"
+	netxdconfig "Netxd_gRPC_MongoDb/netxd_grpc_mongo_server/netxd_config"
+	netxdconstants "Netxd_gRPC_MongoDb/netxd_grpc_mongo_server/netxd_constants"
+	netxdcontrollers "Netxd_gRPC_MongoDb/netxd_grpc_mongo_server/netxd_controllers"
 	"context"
 	"fmt"
 	"net"
@@ -19,7 +19,7 @@ func initDatabase(client *mongo.Client) {
 	netxdcontrollers.CustomerService = services.InitCustomerService(profileCollection, context.Background())
 }
 
-func main(){
+func main() {
 	mongoclient, err := netxdconfig.ConnectDatabase()
 	defer mongoclient.Disconnect(context.TODO())
 	if err != nil {

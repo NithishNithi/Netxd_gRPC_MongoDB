@@ -1,8 +1,8 @@
 package services
 
 import (
-	"Netxd_grpc_mongo/netxd_grpc_mongo_dal/interfaces"
-	"Netxd_grpc_mongo/netxd_grpc_mongo_dal/models"
+	"Netxd_gRPC_MongoDb/netxd_grpc_mongo_dal/interfaces"
+	"Netxd_gRPC_MongoDb/netxd_grpc_mongo_dal/models"
 	"context"
 	"log"
 	"time"
@@ -23,7 +23,7 @@ func InitCustomerService(collection *mongo.Collection, ctx context.Context) inte
 }
 
 // CreateCustomer creates a new customer profile.
-func (p *CustomerService) CreateCustomer(customer *models.Customers) (*models.CustomerResponse,error) {
+func (p *CustomerService) CreateCustomer(customer *models.Customers) (*models.CustomerResponse, error) {
 	t := time.Now()
 	customer.CreatedAt = t.String()
 	customer.UpdatedAt = customer.CreatedAt
@@ -33,7 +33,7 @@ func (p *CustomerService) CreateCustomer(customer *models.Customers) (*models.Cu
 	res, err := p.CustomerCollection.InsertOne(p.ctx, customer)
 	if err != nil {
 		log.Fatal(err)
-		return nil,err
+		return nil, err
 	}
 
 	// Retrieve the newly created customer data from the database.
@@ -42,8 +42,8 @@ func (p *CustomerService) CreateCustomer(customer *models.Customers) (*models.Cu
 
 	err = p.CustomerCollection.FindOne(p.ctx, query).Decode(newUser)
 	if err != nil {
-		return nil,err // Return nil to handle find error
+		return nil, err // Return nil to handle find error
 	}
 
-	return newUser,nil
+	return newUser, nil
 }

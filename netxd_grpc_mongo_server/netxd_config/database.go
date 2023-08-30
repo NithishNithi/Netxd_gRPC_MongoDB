@@ -1,7 +1,7 @@
 package netxdconfig
 
 import (
-	netxdconstants "Netxd_grpc_mongo/netxd_grpc_mongo_server/netxd_constants"
+	netxdconstants "Netxd_gRPC_MongoDb/netxd_grpc_mongo_server/netxd_constants"
 	"context"
 	"time"
 
